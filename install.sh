@@ -7,16 +7,14 @@ TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 
-APT_INSTALL=apt-get install -y
-
 GNU_VERSION=11
 LLVM_VERSION=13
 
 # Install dependencies
-apt-get clean
-apt-get update
-apt-get dist-upgrade -y
-${APT_INSTALL} gnupg ca-certificates wget vim git make man-db
+apt clean
+apt update
+apt dist-upgrade -y
+apt install --no-install-recommends --no-install-suggests -y gnupg ca-certificates wget vim git make man-db
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
@@ -31,7 +29,7 @@ deb http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main
 deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main
 EOF
 
-apt-get update
+apt update
 
 deps="gdb \
 gcc-${GNU_VERSION} \
@@ -63,7 +61,7 @@ for pkg in ${deps}; do
     install_ok='n'
 
     for i in $(seq 10); do
-        if ! ${APT_INSTALL} "${pkg}"; then
+        if ! apt install --no-install-recommends --no-install-suggests -y "${pkg}"; then
             echo "network error. [pkg_name=${pkg}, number_of_retries=${i}]"
         else
             install_ok='y'
@@ -90,4 +88,4 @@ ln -s /usr/bin/clang-format-${LLVM_VERSION} /usr/local/bin/clang-format
 ln -s /usr/bin/clang-tidy-${LLVM_VERSION} /usr/local/bin/clang-tidy
 ln -s /usr/bin/clangd-${LLVM_VERSION} /usr/local/bin/clangd
 
-apt-get clean
+apt clean
