@@ -6,15 +6,14 @@ set -e
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
-
-GNU_VERSION=11
-LLVM_VERSION=13
+export GNU_VERSION=11
+export LLVM_VERSION=13
 
 # Install dependencies
 apt clean
 apt update
 apt dist-upgrade -y
-apt install --no-install-recommends --no-install-suggests -y gnupg ca-certificates wget vim git make man-db
+apt install --no-install-recommends --no-install-suggests -y gnupg ca-certificates wget vim git make
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
@@ -34,8 +33,6 @@ apt update
 deps="gdb \
 gcc-${GNU_VERSION} \
 g++-${GNU_VERSION} \
-libc++-${GNU_VERSION}-dev \
-libc++abi-${GNU_VERSION}-dev \
 cmake \
 libllvm-${LLVM_VERSION}-ocaml-dev \
 libllvm${LLVM_VERSION} \
@@ -48,11 +45,14 @@ clang-${LLVM_VERSION} \
 libclang-common-${LLVM_VERSION}-dev \
 libclang-${LLVM_VERSION}-dev \
 libclang1-${LLVM_VERSION} \
+libc++-${LLVM_VERSION}-dev \
+libc++abi-${LLVM_VERSION}-dev \
 libfuzzer-${LLVM_VERSION}-dev \
 lldb-${LLVM_VERSION} \
 lld-${LLVM_VERSION} \
 libomp-${LLVM_VERSION}-dev \
 clang-tools-${LLVM_VERSION} \
+clang-format-${LLVM_VERSION} \
 clang-${LLVM_VERSION}-doc \
 clang-tidy-${LLVM_VERSION} \
 clangd-${LLVM_VERSION}"
@@ -75,6 +75,8 @@ for pkg in ${deps}; do
     fi
 done
 
+apt clean
+
 ln -s /usr/bin/g++-${GNU_VERSION} /usr/local/bin/g++
 ln -s /usr/bin/gcc-${GNU_VERSION} /usr/local/bin/gcc
 
@@ -87,5 +89,3 @@ ln -s /usr/bin/lldb-${LLVM_VERSION} /usr/local/bin/lldb
 ln -s /usr/bin/clang-format-${LLVM_VERSION} /usr/local/bin/clang-format
 ln -s /usr/bin/clang-tidy-${LLVM_VERSION} /usr/local/bin/clang-tidy
 ln -s /usr/bin/clangd-${LLVM_VERSION} /usr/local/bin/clangd
-
-apt clean
