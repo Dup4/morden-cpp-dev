@@ -1,5 +1,5 @@
-# morden-cpp-dockerized
-Morden Cpp Docker Images
+# morden-cpp-dev
+Morden C++ development environment
 
 ## Build
 
