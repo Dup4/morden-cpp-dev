@@ -1,4 +1,7 @@
-# morden-cpp-dev
+# Morden C++ Dev
+[![Shellcheck](https://github.com/Dup4/morden-cpp-dev/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/Dup4/morden-cpp-dev/actions/workflows/shellcheck.yml)
+[![Build Docker Image](https://github.com/Dup4/morden-cpp-dev/actions/workflows/build_docker_image.yml/badge.svg)](https://github.com/Dup4/morden-cpp-dev/actions/workflows/build_docker_image.yml)
+
 Morden C++ development environment
 
 ## Build
