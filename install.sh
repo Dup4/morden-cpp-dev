@@ -7,15 +7,15 @@ TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 
-APT_INSTALL=apt install -y
+APT_INSTALL=apt-get install -y
 
 GNU_VERSION=11
 LLVM_VERSION=13
 
 # Install dependencies
-apt clean
-apt update
-apt dist-upgrade -y
+apt-get clean
+apt-get update
+apt-get dist-upgrade -y
 ${APT_INSTALL} gnupg ca-certificates wget vim git make man-db
 
 # Key: Ubuntu Toolchain test repo
@@ -31,7 +31,7 @@ deb http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main
 deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main
 EOF
 
-apt update
+apt-get update
 
 deps="gdb \
 gcc-${GNU_VERSION} \
