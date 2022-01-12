@@ -14,7 +14,7 @@ LLVM_VERSION=13
 apt-get clean
 apt-get update
 apt-get dist-upgrade -y
-apt-get install -y gnupg ca-certificates wget
+apt-get install -y gnupg ca-certificates wget vim git make
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
@@ -24,12 +24,24 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 # Add sources
 echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu focal main" >/etc/apt/sources.list.d/ubuntu-toolchain-r-ubuntu-test-focal.list
 
-echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main" >/etc/apt/sources.list.d/llvm.list
-echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main" >>/etc/apt/sources.list.d/llvm.list
+cat >/etc/apt/sources.list.d/llvm.list <<EOF
+deb http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main
+deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} main
+EOF
 
 apt-get update
 
-deps="vim make g++-${GNU_VERSION} gcc-${GNU_VERSION} gdb cmake libc++-${GNU_VERSION}-dev libc++abi-${GNU_VERSION}-dev clang-${LLVM_VERSION} clang++-${LLVM_VERSION} lldb-$LLVM_VERSION lld-$LLVM_VERSION clangd-$LLVM_VERSION"
+deps="make gdb \
+g++-${GNU_VERSION} \
+gcc-${GNU_VERSION} \
+libc++-${GNU_VERSION}-dev \
+libc++abi-${GNU_VERSION}-dev \
+cmake \
+clang-${LLVM_VERSION} \
+clang++-${LLVM_VERSION} \
+lldb-$LLVM_VERSION \
+lld-$LLVM_VERSION \
+clangd-$LLVM_VERSION"
 
 for pkg in ${deps}; do
     install_ok='n'
@@ -53,5 +65,6 @@ ln -s /usr/bin/g++-${GNU_VERSION} /usr/local/bin/g++
 ln -s /usr/bin/gcc-${GNU_VERSION} /usr/local/bin/gcc
 ln -s /usr/bin/clang-${LLVM_VERSION} /usr/local/bin/clang
 ln -s /usr/bin/clang++-${LLVM_VERSION} /usr/local/bin/clang++
+ln -s /usr/bin/clangd-${LLVM_VERSION} /usr/local/bin/clangd
 
 apt-get clean
