@@ -6,8 +6,9 @@ set -e
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
-export GNU_VERSION=11
-export LLVM_VERSION=13
+
+GNU_VERSION=11
+LLVM_VERSION=13
 
 # Install dependencies
 apt clean
