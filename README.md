@@ -10,5 +10,5 @@ docker build -t morden-cpp-dev:latest -f Dockerfile ./
 ## Start
 
 ```bash
-docker run -it --rm morden-cpp-dev:latest
+docker run --rm -v "${PWD}":/app -w /app morden-cpp-dev:latest
 ```
