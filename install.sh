@@ -29,7 +29,7 @@ echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-${LLVM_VERSION} ma
 
 apt-get update
 
-deps="vim make g++-${GNU_VERSION} gcc-${GNU_VERSION} gdb libc++-${GNU_VERSION}-dev libc++abi-${GNU_VERSION}-dev clang-${LLVM_VERSION} clang++-${LLVM_VERSION} lldb-$LLVM_VERSION lld-$LLVM_VERSION clangd-$LLVM_VERSION"
+deps="vim make g++-${GNU_VERSION} gcc-${GNU_VERSION} gdb cmake libc++-${GNU_VERSION}-dev libc++abi-${GNU_VERSION}-dev clang-${LLVM_VERSION} clang++-${LLVM_VERSION} lldb-$LLVM_VERSION lld-$LLVM_VERSION clangd-$LLVM_VERSION"
 
 for pkg in ${deps}; do
     install_ok='n'
