@@ -27,7 +27,7 @@ echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu focal main" >/etc/apt/s
 
 apt-get update
 
-deps="make g++-11 gcc-11 clang-13 libc++-11-dev libc++abi-11-dev python3.9"
+deps="make g++-11 gcc-11 clang-11 libc++-11-dev libc++abi-11-dev python3.9"
 
 for pkg in ${deps}; do
     install_ok='n'
