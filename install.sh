@@ -31,7 +31,8 @@ EOF
 
 apt update
 
-deps="gdb \
+deps="
+gdb \
 gcc-${GNU_VERSION} \
 g++-${GNU_VERSION} \
 cmake \
@@ -56,7 +57,8 @@ clang-tools-${LLVM_VERSION} \
 clang-format-${LLVM_VERSION} \
 clang-${LLVM_VERSION}-doc \
 clang-tidy-${LLVM_VERSION} \
-clangd-${LLVM_VERSION}"
+clangd-${LLVM_VERSION} \
+"
 
 for pkg in ${deps}; do
     install_ok='n'
@@ -78,15 +80,23 @@ done
 
 apt clean
 
-ln -s /usr/bin/g++-${GNU_VERSION} /usr/local/bin/g++
-ln -s /usr/bin/gcc-${GNU_VERSION} /usr/local/bin/gcc
+cd /usr/bin || exit 1
 
-ln -s /usr/bin/llvm-ar-${LLVM_VERSION} /usr/bin/llvm-ar
-ln -s /usr/bin/llvm-as-${LLVM_VERSION} /usr/bin/llvm-as
+gnu_binaries=$(ls ./*-${GNU_VERSION})
+llvm_binaries=$(ls ./*-${LLVM_VERSION})
 
-ln -s /usr/bin/clang-${LLVM_VERSION} /usr/local/bin/clang
-ln -s /usr/bin/clang++-${LLVM_VERSION} /usr/local/bin/clang++
-ln -s /usr/bin/lldb-${LLVM_VERSION} /usr/local/bin/lldb
-ln -s /usr/bin/clang-format-${LLVM_VERSION} /usr/local/bin/clang-format
-ln -s /usr/bin/clang-tidy-${LLVM_VERSION} /usr/local/bin/clang-tidy
-ln -s /usr/bin/clangd-${LLVM_VERSION} /usr/local/bin/clangd
+for raw_binary in ${gnu_binaries}; do
+    # shellcheck disable=SC2001
+    binary=$(echo "${raw_binary}" | sed -e "s/-${GNU_VERSION}$//")
+    ln -s /usr/bin/"${binary}-${GNU_VERSION}" /usr/local/bin/"${binary}"
+done
+
+if [[ "${GNU_VERSION}" != "${LLVM_VERSION}" ]]; then
+    for raw_binary in ${llvm_binaries}; do
+        # shellcheck disable=SC2001
+        binary=$(echo "${raw_binary}" | sed -e "s/-${LLVM_VERSION}$//")
+        ln -s /usr/bin/"${binary}-${LLVM_VERSION}" /usr/local/bin/"${binary}"
+    done
+fi
+
+cd - || exit 1
