@@ -50,6 +50,7 @@ libclang-common-${LLVM_VERSION}-dev \
 libclang-${LLVM_VERSION}-dev \
 libclang1-${LLVM_VERSION} \
 clang-format-${LLVM_VERSION} \
+clang-tidy-${LLVM_VERSION} \
 clangd-${LLVM_VERSION} \
 libfuzzer-${LLVM_VERSION}-dev \
 lldb-${LLVM_VERSION} \
