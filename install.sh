@@ -44,20 +44,24 @@ llvm-${LLVM_VERSION}-doc \
 llvm-${LLVM_VERSION}-examples \
 llvm-${LLVM_VERSION}-runtime \
 clang-${LLVM_VERSION} \
+clang-tools-${LLVM_VERSION} \
+clang-${LLVM_VERSION}-doc \
 libclang-common-${LLVM_VERSION}-dev \
 libclang-${LLVM_VERSION}-dev \
 libclang1-${LLVM_VERSION} \
-libc++-${LLVM_VERSION}-dev \
-libc++abi-${LLVM_VERSION}-dev \
+clang-format-${LLVM_VERSION} \
+python-clang-${LLVM_VERSION} \
+clangd-${LLVM_VERSION} \
 libfuzzer-${LLVM_VERSION}-dev \
 lldb-${LLVM_VERSION} \
 lld-${LLVM_VERSION} \
+libc++-${LLVM_VERSION}-dev \
+libc++abi-${LLVM_VERSION}-dev \
 libomp-${LLVM_VERSION}-dev \
-clang-tools-${LLVM_VERSION} \
-clang-format-${LLVM_VERSION} \
-clang-${LLVM_VERSION}-doc \
-clang-tidy-${LLVM_VERSION} \
-clangd-${LLVM_VERSION} \
+libclc-${LLVM_VERSION}-dev \
+libunwind-${LLVM_VERSION}-dev \
+libmlir-${LLVM_VERSION}-dev \
+mlir-${LLVM_VERSION}-tools \
 "
 
 for pkg in ${deps}; do
