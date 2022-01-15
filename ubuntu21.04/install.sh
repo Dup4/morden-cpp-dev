@@ -4,7 +4,7 @@ set -e
 
 # shellcheck disable=SC2034
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-UBUNTU_TAG="focal"
+UBUNTU_TAG="hirsute"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 
