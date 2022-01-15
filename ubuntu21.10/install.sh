@@ -8,7 +8,7 @@ UBUNTU_TAG="impish"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 
-GNU_VERSION=12
+GNU_VERSION=11
 LLVM_VERSION=13
 
 # Install dependencies
