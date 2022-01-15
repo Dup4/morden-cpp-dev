@@ -4,9 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'version'
+        description: 'tag'
         required: true
-        default: 'latest'
+        default: 'ubuntu20.04'
+        type: string
 
 jobs:
   build-docker-image:
@@ -46,7 +47,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./Dockerfile
+          file: ./${{ github.event.inputs.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: dup4/morden-cpp-dev:${{ github.event.inputs.version }}
+          tags: dup4/morden-cpp-dev:${{ github.event.inputs.tag }}
