@@ -3,7 +3,7 @@ name: Build Docker Image
 on:
   workflow_dispatch:
     inputs:
-      version:
+      tag:
         description: 'tag'
         required: true
         default: 'ubuntu20.04'
