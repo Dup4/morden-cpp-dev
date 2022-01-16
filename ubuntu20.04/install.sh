@@ -15,7 +15,7 @@ LLVM_VERSION=13
 apt clean
 apt update
 apt dist-upgrade -y
-apt install --no-install-recommends --no-install-suggests -y gnupg ca-certificates wget vim git make
+apt install --no-install-recommends --no-install-suggests -y gnupg ca-certificates wget vim git make libssl-dev
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
@@ -36,7 +36,6 @@ deps="
 gdb \
 gcc-${GNU_VERSION} \
 g++-${GNU_VERSION} \
-cmake \
 libllvm-${LLVM_VERSION}-ocaml-dev \
 libllvm${LLVM_VERSION} \
 llvm-${LLVM_VERSION} \
@@ -105,3 +104,12 @@ if [[ "${GNU_VERSION}" != "${LLVM_VERSION}" ]]; then
 fi
 
 cd - || exit 1
+
+for i in "${TOP_DIR}"/install/*; do
+    if [[ -x "${i}" ]]; then
+        if ! "${i}"; then
+            echo "install failed. [script=${i}]"
+            exit 1
+        fi
+    fi
+done
