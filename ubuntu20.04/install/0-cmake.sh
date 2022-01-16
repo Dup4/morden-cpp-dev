@@ -5,11 +5,9 @@ set -e
 cd /root
 
 CMAKE_VERSION="3.22.1"
-
 main_name=cmake-${CMAKE_VERSION}
 
 wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${main_name}.tar.gz
-
 tar -zxvf ${main_name}.tar.gz
 
 cd ${main_name}
