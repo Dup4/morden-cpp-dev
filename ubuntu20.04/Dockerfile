@@ -5,7 +5,7 @@ WORKDIR /root/
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY ./* /root/
+COPY . /root/
 
 RUN bash install.sh \
     && rm -rf /root/*
