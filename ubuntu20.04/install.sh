@@ -110,7 +110,7 @@ fi
 
 cd - || exit 1
 
-for i in "${TOP_DIR}"/install/available/*; do
+for i in "${TOP_DIR}"/install/enabled/*; do
     if [[ -x "${i}" ]]; then
         if ! "${i}"; then
             echo "install failed. [script=${i}]"
