@@ -15,7 +15,7 @@ LLVM_VERSION=13
 apt clean
 apt update
 apt dist-upgrade -y
-apt install --no-install-recommends --no-install-suggests -y gnupg ca-certificates wget vim git make
+apt install --no-install-recommends --no-install-suggests -y sudo gnupg ca-certificates wget vim git make
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
