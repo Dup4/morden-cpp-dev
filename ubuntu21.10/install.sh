@@ -21,6 +21,8 @@ apt install --no-install-recommends --no-install-suggests -y gnupg ca-certificat
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
 # Key: LLVM repo
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+# Key: Kitware repo
+wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
 
 # Add sources
 echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu ${UBUNTU_TAG} main" >/etc/apt/sources.list.d/ubuntu-toolchain-r-ubuntu-test-${UBUNTU_TAG}.list
@@ -29,6 +31,8 @@ cat >/etc/apt/sources.list.d/llvm.list <<EOF
 deb http://apt.llvm.org/${UBUNTU_TAG}/ llvm-toolchain-${UBUNTU_TAG}-${LLVM_VERSION} main
 deb-src http://apt.llvm.org/${UBUNTU_TAG}/ llvm-toolchain-${UBUNTU_TAG}-${LLVM_VERSION} main
 EOF
+
+echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
 
 apt update
 
