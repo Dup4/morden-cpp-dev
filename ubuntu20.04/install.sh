@@ -108,6 +108,8 @@ if [[ "${GNU_VERSION}" != "${LLVM_VERSION}" ]]; then
     done
 fi
 
+pip install gcovr==5.0
+
 cd - || exit 1
 
 for i in "${TOP_DIR}"/install/enabled/*; do
