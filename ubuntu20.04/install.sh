@@ -37,7 +37,6 @@ echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://ap
 apt update
 
 deps="
-lcov \
 gdb \
 gcc-${GNU_VERSION} \
 g++-${GNU_VERSION} \
