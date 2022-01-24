@@ -15,7 +15,7 @@ LLVM_VERSION=13
 apt clean
 apt update
 apt dist-upgrade -y
-apt install --no-install-recommends --no-install-suggests -y sudo gnupg ca-certificates wget vim git make
+apt install --no-install-recommends --no-install-suggests -y sudo gnupg ca-certificates wget vim git make python3-pip
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
@@ -37,6 +37,7 @@ echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://ap
 apt update
 
 deps="
+lcov \
 gdb \
 gcc-${GNU_VERSION} \
 g++-${GNU_VERSION} \
@@ -109,3 +110,5 @@ if [[ "${GNU_VERSION}" != "${LLVM_VERSION}" ]]; then
 fi
 
 cd - || exit 1
+
+pip install gcovr==5.0
