@@ -15,7 +15,7 @@ LLVM_VERSION=13
 apt clean
 apt update
 apt dist-upgrade -y
-apt install --no-install-recommends --no-install-suggests -y sudo gnupg ca-certificates wget vim git make python3-pip
+apt install --no-install-recommends --no-install-suggests -y sudo gnupg ca-certificates wget vim git make build-essential python3-pip
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
