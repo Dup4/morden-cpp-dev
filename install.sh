@@ -4,18 +4,26 @@ set -e
 
 # shellcheck disable=SC2034
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-UBUNTU_TAG="focal"
+
+if [[ -z "${UBUNTU_TAG}" ]]; then
+    UBUNTU_TAG="focol"
+fi
+
+if [[ -z "${GNU_VERSION}" ]]; then
+    GNU_VERSION=11
+fi
+
+if [[ -z "${LLVM_VERSION}" ]]; then
+    LLVM_VERSION=13
+fi
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
-
-GNU_VERSION=11
-LLVM_VERSION=13
 
 # Install dependencies
 apt clean
 apt update
 apt dist-upgrade -y
-apt install --no-install-recommends --no-install-suggests -y sudo gnupg ca-certificates wget vim git make build-essential python3-pip
+apt install --no-install-recommends --no-install-suggests -y sudo gnupg ca-certificates wget vim git make python3-pip zsh tmux htop
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
@@ -32,7 +40,7 @@ deb http://apt.llvm.org/${UBUNTU_TAG}/ llvm-toolchain-${UBUNTU_TAG}-${LLVM_VERSI
 deb-src http://apt.llvm.org/${UBUNTU_TAG}/ llvm-toolchain-${UBUNTU_TAG}-${LLVM_VERSION} main
 EOF
 
-echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ ${UBUNTU_TAG} main" | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
 
 apt update
 
@@ -88,7 +96,7 @@ for pkg in ${deps}; do
     fi
 done
 
-apt clean
+# apt clean
 
 cd /usr/bin || exit 1
 
@@ -109,15 +117,17 @@ if [[ "${GNU_VERSION}" != "${LLVM_VERSION}" ]]; then
     done
 fi
 
-pip install gcovr==5.0
-
 cd - || exit 1
 
-for i in "${TOP_DIR}"/install/enabled/*; do
-    if [[ -x "${i}" ]]; then
-        if ! "${i}"; then
-            echo "install failed. [script=${i}]"
-            exit 1
+python3 -m pip install gcovr==5.0
+
+if [[ -d "${TOP_DIR}/install/enabled" ]]; then
+    for i in "${TOP_DIR}"/install/enabled/*; do
+        if [[ -x "${i}" ]]; then
+            if ! "${i}"; then
+                echo "install failed. [script=${i}]"
+                exit 1
+            fi
         fi
-    fi
-done
+    done
+fi
