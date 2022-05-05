@@ -23,7 +23,20 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 apt clean
 apt update
 apt dist-upgrade -y
-apt install --no-install-recommends --no-install-suggests -y sudo locales gnupg ca-certificates wget vim git make python3-pip zsh tmux htop ssh
+apt install --no-install-recommends --no-install-suggests -y \
+    sudo \
+    locales \
+    gnupg \
+    ca-certificates \
+    wget \
+    vim \
+    git \
+    make \
+    python3-pip \
+    zsh \
+    tmux \
+    htop \
+    ssh
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
