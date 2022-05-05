@@ -17,7 +17,7 @@ ENV LC_ALL en_US.UTF-8
 RUN cp install.sh ./"${UBUNTU_VERSION}"/\
     && cd "${UBUNTU_VERSION}" \
     && bash install.sh \
-    && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+    && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
     && locale-gen \
     && rm -rf /root/*
 
