@@ -160,6 +160,7 @@ fi
 
 cd - || exit 1
 
+ln -s /usr/bin/cmake /usr/local/bin/cmake
 ln -s /usr/bin/python3 /usr/bin/python
 python -m pip install gcovr==5.0
 
