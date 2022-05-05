@@ -6,7 +6,7 @@ set -e
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 if [[ -z "${UBUNTU_TAG}" ]]; then
-    UBUNTU_TAG="focol"
+    UBUNTU_TAG="focal"
 fi
 
 if [[ -z "${GNU_VERSION}" ]]; then
