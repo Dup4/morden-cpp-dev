@@ -24,19 +24,48 @@ apt clean
 apt update
 apt dist-upgrade -y
 apt install --no-install-recommends --no-install-suggests -y \
-    sudo \
-    locales \
-    gnupg \
-    ca-certificates \
+    openssh-client \
+    gnupg2 \
+    dirmngr \
+    iproute2 \
+    procps \
+    lsof \
+    htop \
+    net-tools \
+    psmisc \
+    curl \
     wget \
+    rsync \
+    ca-certificates \
+    unzip \
+    zip \
     vim \
+    less \
+    jq \
+    lsb-release \
+    apt-transport-https \
+    dialog \
+    libc6 \
+    libgcc1 \
+    libkrb5-3 \
+    libgssapi-krb5-2 \
+    libicu[0-9][0-9] \
+    liblttng-ust[0-9] \
+    libstdc++6 \
+    zlib1g \
+    locales \
+    sudo \
+    ncdu \
+    man-db \
+    strace \
+    manpages \
+    manpages-dev \
+    init-system-helpers \
     git \
     make \
     python3-pip \
     zsh \
-    tmux \
-    htop \
-    ssh
+    tmux
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
