@@ -119,7 +119,8 @@ fi
 
 cd - || exit 1
 
-python3 -m pip install gcovr==5.0
+ln -s /usr/bin/python3 /usr/bin/python
+python -m pip install gcovr==5.0
 
 if [[ -d "${TOP_DIR}/install/enabled" ]]; then
     for i in "${TOP_DIR}"/install/enabled/*; do
