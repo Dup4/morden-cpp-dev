@@ -3,7 +3,7 @@ FROM ubuntu:21.04
 USER root
 WORKDIR /root/
 
-COPY ./* /root/
+COPY . /root/
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV UBUNTU_TAG="hirsute"
