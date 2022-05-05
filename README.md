@@ -6,10 +6,10 @@
 
 Morden C++ development environment
 
-It's based on Ubuntu 20.04 and contains softwares below:
+It's based on Ubuntu and contains softwares below:
 
-- GCC 11(from [PPA](https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test))
-- Clang 13(from [LLVM](https://apt.llvm.org/))
+- GCC(from [PPA](https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test))
+- Clang(from [LLVM](https://apt.llvm.org/))
 - CMake(from [Kitware](https://apt.kitware.com/))
 
 ## Build
