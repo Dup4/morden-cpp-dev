@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'tag'
+        description: "tag"
         required: true
-        default: 'ubuntu20.04'
+        default: "ubuntu20.04"
         type: string
 
 jobs:
