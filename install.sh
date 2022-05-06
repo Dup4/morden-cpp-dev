@@ -60,10 +60,11 @@ apt install --no-install-recommends --no-install-suggests -y \
     manpages-dev \
     init-system-helpers \
     git \
-    make \
     python3-pip \
     zsh \
-    tmux
+    tmux \
+    make \
+    ninja-build
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
