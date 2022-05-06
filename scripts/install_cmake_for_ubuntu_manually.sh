@@ -5,7 +5,7 @@ set -e
 # shellcheck disable=SC2034
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
-CMAKE_VERSION=${1:-"none"}
+CMAKE_VERSION=${CMAKE_VERSION:-"none"}
 
 if [[ "${CMAKE_VERSION}" = "none" ]]; then
     echo "No CMake version specified, skipping CMake reinstallation"
