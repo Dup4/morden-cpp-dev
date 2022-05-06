@@ -7,6 +7,7 @@ TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 apt install --no-install-recommends --no-install-suggests -y \
     build-essential \
+    bison \
     libstdc++6 \
     ninja-build \
     gdb \
