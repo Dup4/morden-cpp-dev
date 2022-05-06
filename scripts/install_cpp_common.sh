@@ -12,5 +12,4 @@ apt install --no-install-recommends --no-install-suggests -y \
     gdb \
     lcov
 
-python -m pip install setuptools wheel
 python -m pip install gcovr
