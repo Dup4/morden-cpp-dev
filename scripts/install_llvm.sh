@@ -5,7 +5,12 @@ set -e
 # shellcheck disable=SC2034
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
-LLVM_VERSION="${LLVM_VERSION:-13}"
+LLVM_VERSION="${LLVM_VERSION:-"none"}"
+
+if [ "${LLVM_VERSION}" = "none" ]; then
+    echo "No LLVM version specified, skipping LLVM reinstallation"
+    exit 0
+fi
 
 # https://apt.llvm.org/
 

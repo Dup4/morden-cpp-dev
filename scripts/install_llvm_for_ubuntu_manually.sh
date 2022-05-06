@@ -6,7 +6,12 @@ set -e
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 UBUNTU_TAG="${UBUNTU_TAG:-"focal"}"
-LLVM_VERSION="${LLVM_VERSION:-13}"
+LLVM_VERSION="${LLVM_VERSION:-"none"}"
+
+if [ "${LLVM_VERSION}" = "none" ]; then
+    echo "No LLVM version specified, skipping LLVM reinstallation"
+    exit 0
+fi
 
 # Key: LLVM repo
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
