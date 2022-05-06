@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.10
 
 USER root
 WORKDIR /root/
@@ -7,7 +7,7 @@ COPY . /root/
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV UBUNTU_TAG="focal"
+ENV UBUNTU_TAG="groovy"
 ENV UBUNTU_VERSION="ubuntu20.10"
 ENV GNU_VERSION=11
 ENV LLVM_VERSION=14
