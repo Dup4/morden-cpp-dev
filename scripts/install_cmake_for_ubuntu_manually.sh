@@ -7,7 +7,7 @@ TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 CMAKE_VERSION=${1:-"none"}
 
-if [ "${CMAKE_VERSION}" = "none" ]; then
+if [[ "${CMAKE_VERSION}" = "none" ]]; then
     echo "No CMake version specified, skipping CMake reinstallation"
     exit 0
 fi

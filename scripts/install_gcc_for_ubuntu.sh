@@ -8,7 +8,7 @@ TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 UBUNTU_TAG="${UBUNTU_TAG:-"focal"}"
 GCC_VERSION="${GCC_VERSION:-"none"}"
 
-if [ "${GCC_VERSION}" = "none" ]; then
+if [[ "${GCC_VERSION}" = "none" ]]; then
     echo "No GCC version specified, skipping GCC reinstallation"
     exit 0
 fi

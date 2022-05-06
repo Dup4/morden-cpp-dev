@@ -8,7 +8,7 @@ TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 UBUNTU_TAG="${UBUNTU_TAG:-"focal"}"
 LLVM_VERSION="${LLVM_VERSION:-"none"}"
 
-if [ "${LLVM_VERSION}" = "none" ]; then
+if [[ "${LLVM_VERSION}" = "none" ]]; then
     echo "No LLVM version specified, skipping LLVM reinstallation"
     exit 0
 fi
