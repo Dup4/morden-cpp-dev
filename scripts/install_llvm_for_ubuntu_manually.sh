@@ -67,7 +67,7 @@ done
 
 cd /usr/bin || exit 1
 
-llvm_binaries=$(ls ./*-${LLVM_VERSION})
+llvm_binaries=$(ls ./*-"${LLVM_VERSION}")
 
 for raw_binary in ${llvm_binaries}; do
     # shellcheck disable=SC2001
