@@ -6,7 +6,12 @@ set -e
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 UBUNTU_TAG="${UBUNTU_TAG:-"focal"}"
-GCC_VERSION=${GCC_VERSION:-11}
+GCC_VERSION="${GCC_VERSION:-"none"}"
+
+if [ "${GCC_VERSION}" = "none" ]; then
+    echo "No GCC version specified, skipping GCC reinstallation"
+    exit 0
+fi
 
 # Key: Ubuntu Toolchain test repo
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 1e9377a2ba9ef27f
