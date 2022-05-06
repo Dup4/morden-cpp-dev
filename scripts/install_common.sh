@@ -31,6 +31,7 @@ apt install --no-install-recommends --no-install-suggests -y \
     less \
     jq \
     lsb-release \
+    software-properties-common \
     apt-transport-https \
     dialog \
     libc6 \
