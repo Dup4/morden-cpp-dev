@@ -49,7 +49,6 @@ apt install --no-install-recommends --no-install-suggests -y \
     init-system-helpers \
     git \
     python3-pip \
-    python3-setuptools \
     zsh \
     tmux
 
