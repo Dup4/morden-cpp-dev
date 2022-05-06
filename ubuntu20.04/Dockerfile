@@ -18,7 +18,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 ENV TERM xterm-256color
 
-RUN bash install_ubuntu.sh \
+RUN bash scripts/install_ubuntu.sh \
     && rm -rf /root/*
 
 CMD ["/bin/bash"]
