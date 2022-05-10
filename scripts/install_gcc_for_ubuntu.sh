@@ -22,8 +22,6 @@ echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu ${UBUNTU_TAG} 
 apt update
 
 deps="
-gcc-${GCC_VERSION} \
-g++-${GCC_VERSION} \
 g++-${GCC_VERSION}-multilib \
 gcc-${GCC_VERSION}-multilib \
 "
