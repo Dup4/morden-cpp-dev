@@ -24,6 +24,8 @@ apt update
 deps="
 gcc-${GCC_VERSION} \
 g++-${GCC_VERSION} \
+g++-${GCC_VERSION}-multilib \
+gcc-${GCC_VERSION}-multilib \
 "
 
 for pkg in ${deps}; do
