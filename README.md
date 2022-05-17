@@ -22,5 +22,8 @@ docker build -t morden-cpp-dev:latest -f Dockerfile ./{debian_version}
 ## Start
 
 ```bash
-docker run --rm -v "${PWD}":/app -w /app morden-cpp-dev:latest
+docker run \
+    -it \
+    --rm \
+    morden-cpp-dev:ubuntu22.04
 ```
