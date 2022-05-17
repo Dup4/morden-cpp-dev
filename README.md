@@ -16,7 +16,7 @@ It's based on Debian and contains softwares below:
 ## Build
 
 ```bash
-docker build -t morden-cpp-dev:latest -f Dockerfile ./
+docker build -t morden-cpp-dev:latest -f Dockerfile ./{debian_version}
 ```
 
 ## Start
