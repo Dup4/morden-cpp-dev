@@ -12,6 +12,8 @@ if [[ "${CMAKE_VERSION}" = "none" ]]; then
     exit 0
 fi
 
+echo "CMake Version is: ${CMAKE_VERSION}"
+
 # Cleanup temporary directory and associated files when exiting the script.
 cleanup() {
     EXIT_CODE=$?
