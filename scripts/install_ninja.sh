@@ -53,6 +53,6 @@ cd "${TMP_DIR}" || exit 1
 curl -SL --progress-bar "https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/${NINJA_BINARY_NAME}" -O
 unzip "${NINJA_BINARY_NAME}"
 
-mv ninja /usr/local/bin/ninja
+${SUDO} mv ninja /usr/local/bin/ninja
 
 rm -rf "${TMP_DIR}"
