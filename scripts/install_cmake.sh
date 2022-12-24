@@ -5,11 +5,26 @@ set -e
 # shellcheck disable=SC2034
 TOP_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
+CURRENT_USER="$(whoami)"
+SUDO="sudo"
+
+if [[ "${CURRENT_USER}" == "root" ]]; then
+    SUDO=""
+fi
+
 CMAKE_VERSION=${CMAKE_VERSION:-"none"}
 
 if [[ "${CMAKE_VERSION}" = "none" ]]; then
-    echo "No CMake version specified, skipping CMake reinstallation"
-    exit 0
+    echo "No CMake version specified, use latest version"
+
+    latest_cmake_version=$(curl https://api.github.com/repos/Kitware/CMake/releases/latest -s | jq .tag_name -r)
+
+    if [[ "${latest_cmake_version}" != "v"* ]]; then
+        echo "get latest CMkae version failed. please retry later"
+        exit 1
+    fi
+
+    CMAKE_VERSION=${latest_cmake_version#"v"}
 fi
 
 echo "CMake Version is: ${CMAKE_VERSION}"
@@ -27,7 +42,8 @@ cleanup() {
 trap cleanup EXIT
 
 echo "Installing CMake..."
-apt-get -y purge --auto-remove cmake
+
+${SUDO} apt-get -y purge --auto-remove cmake
 mkdir -p /opt/cmake
 
 architecture=$(dpkg --print-architecture)
