@@ -72,7 +72,6 @@ curl -SL --progress-bar "https://github.com/Kitware/CMake/releases/download/v${C
 
 sha256sum -c --ignore-missing "${CMAKE_CHECKSUM_NAME}"
 ${SUDO} sh "${TMP_DIR}/${CMAKE_BINARY_NAME}" --prefix=/opt/cmake --skip-license
-
-ln -sf /opt/cmake/bin/cmake /usr/local/bin/cmake
+${SUDO} ln -sf /opt/cmake/bin/cmake /usr/local/bin/cmake
 
 rm -rf "${TMP_DIR}"
