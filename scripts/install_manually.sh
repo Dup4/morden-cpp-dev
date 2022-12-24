@@ -74,7 +74,7 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
 
 # Add sources
-echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu ${UBUNTU_TAG} main" >/etc/apt/sources.list.d/ubuntu-toolchain-r-ubuntu-test-${UBUNTU_TAG}.list
+echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu ${UBUNTU_TAG} main" >/etc/apt/sources.list.d/ubuntu-toolchain-r-ubuntu-test-"${UBUNTU_TAG}".list
 
 cat >/etc/apt/sources.list.d/llvm.list <<EOF
 deb http://apt.llvm.org/${UBUNTU_TAG}/ llvm-toolchain-${UBUNTU_TAG}-${LLVM_VERSION} main
@@ -142,8 +142,8 @@ done
 
 cd /usr/bin || exit 1
 
-gnu_binaries=$(ls ./*-${GNU_VERSION})
-llvm_binaries=$(ls ./*-${LLVM_VERSION})
+gnu_binaries=$(ls ./*-"${GNU_VERSION}")
+llvm_binaries=$(ls ./*-"${LLVM_VERSION}")
 
 for raw_binary in ${gnu_binaries}; do
     # shellcheck disable=SC2001
