@@ -51,18 +51,19 @@ function build() {
     ENABLE_PROJECTS="clang;clang-tools-extra;cross-project-tests;flang;libclc;lld;lldb;mlir;openmp;polly;pstl;llvm;"
     ENABLE_RUNTIMES="compiler-rt;libc;libcxx;libcxxabi;libunwind;"
 
+    # -DCMAKE_C_COMPILER=clang \
+    # -DCMAKE_CXX_COMPILER=clang++ \
+    # -DLLVM_USE_LINKER=lld
+
     cmake \
         -G Ninja \
         -S ../llvm \
         -B ../build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_C_COMPILER=clang \
-        -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_INSTALL_PREFIX="${INSTALL_PATH}" \
         -DLLVM_ENABLE_PROJECTS="${ENABLE_PROJECTS}" \
         -DLLVM_ENABLE_RUNTIMES="${ENABLE_RUNTIMES}" \
         -DLLVM_ENABLE_ASSERTIONS=ON \
-        -DLLVM_USE_LINKER=lld \
         -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON
 
     ninja -j "${CPUS}"
