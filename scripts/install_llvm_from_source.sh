@@ -58,7 +58,6 @@ function build() {
 
     # -DCMAKE_C_COMPILER=clang \
     # -DCMAKE_CXX_COMPILER=clang++ \
-    # -DLLVM_USE_LINKER=lld
 
     cmake \
         -G Ninja \
@@ -69,6 +68,7 @@ function build() {
         -DLLVM_ENABLE_PROJECTS="${ENABLE_PROJECTS}" \
         -DLLVM_ENABLE_RUNTIMES="${ENABLE_RUNTIMES}" \
         -DLLVM_ENABLE_ASSERTIONS=ON \
+        -DLLVM_USE_LINKER=lld \
         -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON
 
     ninja -j "${CPUS}"
