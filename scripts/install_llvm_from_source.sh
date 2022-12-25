@@ -42,6 +42,11 @@ cd "${WORKSPACE}" || exit 1
 BUILD_PATH="${WORKSPACE}/build"
 
 mkdir -p "${BUILD_PATH}"
+
+if [[ -d "${INSTALL_PATH}" ]]; then
+    rm -rf "${INSTALL_PATH}"
+fi
+
 mkdir -p "${INSTALL_PATH}"
 
 cd "${BUILD_PATH}" || exit 1
