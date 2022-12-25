@@ -54,5 +54,6 @@ curl -SL --progress-bar "https://github.com/ninja-build/ninja/releases/download/
 unzip "${NINJA_BINARY_NAME}"
 
 ${SUDO} mv ninja /usr/local/bin/ninja
+${SUDO} chown root:root /usr/local/bin/ninja
 
 rm -rf "${TMP_DIR}"
