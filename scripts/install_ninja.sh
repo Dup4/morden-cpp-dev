@@ -28,7 +28,7 @@ if [[ "${NINJA_VERSION}" == "none" ]]; then
     NINJA_VERSION=${latest_ninja_version#"v"}
 fi
 
-echo "Ninja Version is: ${NINJA_VERSION}"
+INFO "Ninja Version is: ${NINJA_VERSION}"
 
 # Cleanup temporary directory and associated files when exiting the script.
 cleanup() {
@@ -55,5 +55,3 @@ unzip "${NINJA_BINARY_NAME}"
 
 ${SUDO} mv ninja /usr/local/bin/ninja
 ${SUDO} chown root:root /usr/local/bin/ninja
-
-rm -rf "${TMP_DIR}"
