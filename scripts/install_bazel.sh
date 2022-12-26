@@ -56,6 +56,6 @@ TMP_DIR=$(mktemp -d -t bazel-XXXXXXXXXX)
 INFO "${TMP_DIR}"
 cd "${TMP_DIR}" || exit 1
 
-curl -SL --progress-bar "https://github.com/bazelbuild/bazel/releases/download/${BAZELISK_VERSION}/${BAZELISK_BINARY_NAME}" -O
+curl -SL --progress-bar "https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/${BAZEL_BINARY_NAME}" -O
 
 ${SUDO} mv "${BAZEL_BINARY_NAME}" /usr/local/bin/
