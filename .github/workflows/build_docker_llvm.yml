@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://json-schema.org/draft-07/schema#
-name: Build Docker Image 2
+name: Build LLVM Docker Image
 on:
   workflow_dispatch:
     inputs:

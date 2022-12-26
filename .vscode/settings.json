@@ -6,9 +6,11 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "cSpell.words": [
+        "binfmt",
         "buildx",
         "DOCKERHUB",
         "morden",
-        "Shellcheck"
+        "Shellcheck",
+        "tonistiigi"
     ],
 }
