@@ -9,3 +9,4 @@ bash "${TOP_DIR}"/install_common.sh
 bash "${TOP_DIR}"/install_cpp_common.sh
 bash "${TOP_DIR}"/install_llvm.sh
 bash "${TOP_DIR}"/install_cmake.sh
+bash "${TOP_DIR}"/install_bazel.sh

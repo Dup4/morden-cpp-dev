@@ -50,7 +50,9 @@ apt install --no-install-recommends --no-install-suggests -y \
     git \
     python3-pip \
     zsh \
-    tmux
+    tmux \
+    file \
+    iputils-ping
 
 ln -s /usr/bin/python3 /usr/bin/python
 
