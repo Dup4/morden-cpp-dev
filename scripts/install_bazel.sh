@@ -20,6 +20,7 @@ if [[ "${BAZEL_VERSION}" == "none" ]]; then
 
     latest_bazel_version=$(curl https://api.github.com/repos/bazelbuild/bazel/releases/latest -s | jq .tag_name -r)
 
+    # shellcheck disable=SC2181
     if [[ $? != 0 ]]; then
         ERROR "get Bazel Version failed."
         exit 1
@@ -58,4 +59,6 @@ cd "${TMP_DIR}" || exit 1
 
 curl -SL --progress-bar "https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/${BAZEL_BINARY_NAME}" -O
 
-${SUDO} mv "${BAZEL_BINARY_NAME}" /usr/local/bin/
+${SUDO} mv "${BAZEL_BINARY_NAME}" /usr/local/bin/bazel
+${SUDO} chown root:root /usr/local/bin/bazel
+${SUDO} chmod +x /usr/local/bin/bazel
