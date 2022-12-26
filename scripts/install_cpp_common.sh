@@ -12,6 +12,8 @@ apt install --no-install-recommends --no-install-suggests -y \
     gdb \
     lcov
 
+# libc6 \
+# libgcc1 \
 # build-essential \
 # libstdc++6 \
 

@@ -34,8 +34,6 @@ apt install --no-install-recommends --no-install-suggests -y \
     software-properties-common \
     apt-transport-https \
     dialog \
-    libc6 \
-    libgcc1 \
     libkrb5-3 \
     libgssapi-krb5-2 \
     zlib1g \
