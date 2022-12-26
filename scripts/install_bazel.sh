@@ -19,6 +19,12 @@ if [[ "${BAZEL_VERSION}" == "none" ]]; then
     INFO "no Bazel Version specified, use latest version"
 
     latest_bazel_version=$(curl https://api.github.com/repos/bazelbuild/bazel/releases/latest -s | jq .tag_name -r)
+
+    if [[ $? != 0 ]]; then
+        ERROR "get Bazel Version failed."
+        exit 1
+    fi
+
     BAZEL_VERSION=${latest_bazel_version#"v"}
 fi
 
