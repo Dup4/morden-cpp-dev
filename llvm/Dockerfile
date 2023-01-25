@@ -20,6 +20,9 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 ENV TERM xterm-256color
 
+ENV CC=clang
+ENV CXX=clang++
+
 RUN bash scripts/install_llvm_image.sh \
     && rm -rf /root/*
 
